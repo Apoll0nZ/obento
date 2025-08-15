@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "Logging in to Amazon ECR..."
+      - aws ecr get-login-password --region ap-northeast-1 | docker login --username AWS --password-stdin 217558553246.dkr.ecr.ap-northeast-1.amazonaws.com
+  build:
+    commands:
+      - echo "Building the Docker image..."
+      - docker build -t line-webhook-handler:latest -f Dockerfile.line_webhook_handler .
+      - docker tag line-webhook-handler:latest 217558553246.dkr.ecr.ap-northeast-1.amazonaws.com/line-webhook-handler:latest
+  post_build:
+    commands:
+      - echo "Pushing the Docker image to ECR..."
+      - docker push 217558553246.dkr.ecr.ap-northeast-1.amazonaws.com/line-webhook-handler:latest

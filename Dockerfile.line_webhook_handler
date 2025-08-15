@@ -1,0 +1,13 @@
+# シングルアーキテクチャのPythonイメージをベースにする
+FROM python:3.9-slim
+
+# Lambdaのランタイムインターフェースクライアントをインストール
+COPY line_requirements.txt .
+RUN pip install -r line_requirements.txt
+RUN pip install awslambdaric
+
+# アプリケーションコードをコンテナにコピー
+COPY line_webhook_handler.py .
+
+# Lambdaの実行ハンドラーを指定
+CMD ["line_webhook_handler.handler"]

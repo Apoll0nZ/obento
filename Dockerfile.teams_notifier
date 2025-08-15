@@ -1,0 +1,14 @@
+# Lambdaのベースイメージとして、Python 3.9を使用
+FROM public.ecr.aws/lambda/python:3.9
+
+# teams_notifierのアプリケーションコードをコンテナにコピー
+COPY teams_notifier.py ./
+
+# 依存ライブラリをインストール
+# `requests`はTeamsへのHTTPリクエストに必要です
+COPY teams_requirements.txt .
+RUN python3.9 -m pip install -r teams_requirements.txt
+
+# Lambdaの実行ハンドラーを指定
+# format: [ファイル名].[ハンドラー関数名]
+CMD ["teams_notifier.lambda_handler"]

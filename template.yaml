@@ -1,0 +1,21 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  line-webhook-handler
+
+Resources:
+  LineWebhookHandler:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      ImageUri: .
+      FunctionName: line_webhook_handler
+      Timeout: 10
+      MemorySize: 128
+      Role: arn:aws:iam::217558553246:role/line_webhook_handler-role-6ikm608e
+      Architectures:
+        - x86_64
+    Metadata:
+      Dockerfile: Dockerfile.line_webhook_handler
+      DockerContext: ./
+      DockerTag: latest
