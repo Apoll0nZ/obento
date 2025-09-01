@@ -1,0 +1,24 @@
+実行ロール
+LineWebhookHandler-role
+
+
+CONFIG_TABLE_NAME   line-group-config
+DYNAMODB_TABLE_NAME Cancellations
+LINE_CHANNEL_ACCESS_TOKEN
+LINE_CHANNEL_SECRET
+TZ  Asia/Tokyo
+VENDOR_EMAIL
+
+
+
+
+TeamsNotifier
+ロール名
+teams_notifier-role 
+
+CONFIG_TABLE_NAME.   line-group-config
+DYNAMODB_TABLE_NAME.  Cancellations
+LINE_CHANNEL_ACCESS_TOKEN
+SENDER_EMAIL
+TEAMS_COMMUNITY_EMAIL
+
