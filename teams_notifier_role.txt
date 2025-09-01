@@ -1,0 +1,210 @@
+AWSLambdaBasicExecutionRole
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+DynamoDB_ReadAndDelete_Policy
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:DeleteItem",
+				"dynamodb:Scan"
+			],
+			"Resource": "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations"
+		}
+	]
+}
+
+
+DynamoDBReadForLambda
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:ap-northeast-1:123456789012:log-group:/aws/lambda/MyNotifierLambda:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Scan",
+                "dynamodb:GetItem",
+                "dynamodb:BatchGetItem"
+            ],
+            "Resource": "arn:aws:dynamodb:ap-northeast-1:123456789012:table/Bento_cancellation_list"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Scan",
+                "dynamodb:DeleteItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:DescribeStream",
+                "dynamodb:ListStreams"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations",
+                "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations/stream/*"
+            ]
+        }
+    ]
+}
+
+DynamoDBReadForLambda
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:ap-northeast-1:123456789012:log-group:/aws/lambda/MyNotifierLambda:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Scan",
+                "dynamodb:GetItem",
+                "dynamodb:BatchGetItem"
+            ],
+            "Resource": "arn:aws:dynamodb:ap-northeast-1:123456789012:table/Bento_cancellation_list"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "dynamodb:Scan",
+                "dynamodb:DeleteItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:DescribeStream",
+                "dynamodb:ListStreams"
+            ],
+            "Resource": [
+                "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations",
+                "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations/stream/*"
+            ]
+        }
+    ]
+}
+
+Lambda_SES_SendEmail_Policy
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"ses:SendEmail",
+				"ses:SendTemplatedEmail",
+				"ses:SendCustomVerificationEmail",
+				"ses:SendRawEmail",
+				"ses:SendBulkTemplatedEmail",
+				"ses:SendBounce"
+			],
+			"Resource": "arn:aws:ses:ap-northeast-1:217558553246:identity/hana4575@gmail.com"
+		},
+		{
+			"Sid": "VisualEditor1",
+			"Effect": "Allow",
+			"Action": [
+				"ses:CreateReceiptRule",
+				"ses:UpdateConfigurationSetEventDestination",
+				"ses:SetIdentityMailFromDomain",
+				"ses:DeleteReceiptFilter",
+				"ses:VerifyEmailIdentity",
+				"ses:DeleteCustomVerificationEmailTemplate",
+				"ses:TestRenderTemplate",
+				"ses:CreateReceiptFilter",
+				"ses:DeleteReceiptRule",
+				"ses:DeleteConfigurationSet",
+				"ses:CreateConfigurationSetTrackingOptions",
+				"ses:UpdateAccountSendingEnabled",
+				"ses:DeleteConfigurationSetEventDestination",
+				"ses:VerifyDomainDkim",
+				"ses:DeleteVerifiedEmailAddress",
+				"ses:VerifyDomainIdentity",
+				"ses:CloneReceiptRuleSet",
+				"ses:SetIdentityHeadersInNotificationsEnabled",
+				"ses:UpdateTemplate",
+				"ses:DeleteConfigurationSetTrackingOptions",
+				"ses:UpdateConfigurationSetTrackingOptions",
+				"ses:SetIdentityNotificationTopic",
+				"ses:SetIdentityDkimEnabled",
+				"ses:PutConfigurationSetDeliveryOptions",
+				"ses:VerifyEmailAddress",
+				"ses:UpdateReceiptRule",
+				"ses:CreateConfigurationSet",
+				"ses:UpdateConfigurationSetReputationMetricsEnabled",
+				"ses:DeleteReceiptRuleSet",
+				"ses:CreateTemplate",
+				"ses:ReorderReceiptRuleSet",
+				"ses:UpdateConfigurationSetSendingEnabled",
+				"ses:SetActiveReceiptRuleSet",
+				"ses:CreateCustomVerificationEmailTemplate",
+				"ses:UpdateCustomVerificationEmailTemplate",
+				"ses:DeleteTemplate",
+				"ses:CreateReceiptRuleSet",
+				"ses:SetReceiptRulePosition",
+				"ses:CreateConfigurationSetEventDestination",
+				"ses:DeleteIdentity",
+				"ses:SetIdentityFeedbackForwardingEnabled"
+			],
+			"Resource": "*"
+		}
+	]
+}
+
+
+LineGroupConfigAccessPolicy
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:PutItem",
+				"dynamodb:GetItem"
+			],
+			"Resource": "arn:aws:dynamodb:ap-northeast-1:217558553246:table/line-group-config"
+		}
+	]
+}
+
+SES_SendEmail_Policy
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"ses:SendEmail",
+				"ses:SendRawEmail"
+			],
+			"Resource": "*"
+		}
+	]
+}

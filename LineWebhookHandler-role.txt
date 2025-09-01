@@ -1,0 +1,56 @@
+AWSLambdaBasicExecutionRole-25e0680d-3dde-44ec-86b6-d7ee40eff7a8
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:ap-northeast-1:217558553246:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:ap-northeast-1:217558553246:log-group:/aws/lambda/LineWebhookHandler:*"
+            ]
+        }
+    ]
+}
+
+
+LineGroupConfigAccessPolicy
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:PutItem",
+				"dynamodb:GetItem"
+			],
+			"Resource": "arn:aws:dynamodb:ap-northeast-1:217558553246:table/line-group-config"
+		}
+	]
+}
+
+LineWebhookHandler_DynamoDB_Write
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "VisualEditor0",
+			"Effect": "Allow",
+			"Action": [
+				"dynamodb:PutItem",
+				"dynamodb:UpdateItem",
+				"dynamodb:Query",
+				"dynamodb:DeleteItem"
+			],
+			"Resource": "arn:aws:dynamodb:ap-northeast-1:217558553246:table/Cancellations"
+		}
+	]
+}
+
